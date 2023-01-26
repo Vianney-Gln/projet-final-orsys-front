@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { UtilisateurDto } from '../../../../models/UtilisateurDto';
 
@@ -9,7 +10,7 @@ import { UtilisateurDto } from '../../../../models/UtilisateurDto';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   utilisateurDto?: UtilisateurDto;
 
@@ -18,9 +19,12 @@ export class LoginComponent {
       next: (resp) => {
         this.utilisateurDto = resp;
         if (this.utilisateurDto['role'] == 'concessionnaire') {
+          localStorage.setItem('utilisateurId', this.utilisateurDto['id']);
           console.log('cons');
         } else {
+          localStorage.setItem('utilisateurId', this.utilisateurDto['id']);
           console.log('utilisateur');
+          this.router.navigateByUrl('/reservations');
         }
       },
       error: (err) => {
