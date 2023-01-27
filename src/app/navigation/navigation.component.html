@@ -1,24 +1,20 @@
-<div class="row bg-dark">
-  <div class="col-12">
-    <nav class="navbar navbar-expand-xl navbar-dark ">
-      <a class="navbar-brand">Concession privée</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample06"
-        aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarsExample06">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Créer une réservation</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Vos réservation</a>
-          </li>
-        </ul>
-
-      </div>
-      <button class="btn btn-dark" type="button">Deconnexion</button>
-    </nav>
+<nav class="navbar bg-dark navbar-expand-sm navbar-dark ">
+  <div class="navbar-brand">Concession privée</div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample06"
+    aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
+  </button>
+  <div class="collapse navbar-collapse" id="navbarsExample06">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+          [routerLink]="['/reservations/create']">Créer
+          une réservation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+          [routerLink]="['/reservations']">Vos réservation</a>
+      </li>
+    </ul>
   </div>
-</div>
+  <div class="col col-1"><button class="btn btn-dark" type="button">Deconnexion</button></div>
+</nav>
