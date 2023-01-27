@@ -1,7 +1,7 @@
 export class Parasol {
   constructor(
-    private id: number,
-    private numeroEmplacement: number,
-    private file: File
+    public id: number,
+    public numeroEmplacement: number,
+    public file: File
   ) {}
 }

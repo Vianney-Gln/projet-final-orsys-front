@@ -1,8 +1,8 @@
 export class UtilisateurDto {
   constructor(
-    private id: string,
-    private prenom: string,
-    private nom: string,
-    private role: string
+    public id: string,
+    public prenom: string,
+    public nom: string,
+    public role: string
   ) {}
 }

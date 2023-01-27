@@ -2,17 +2,17 @@ import { Locataire } from './Locataire';
 import { Parasol } from './Parasol';
 import { Concessionnaire } from './Concessionnaire';
 import { Statut } from './Statut';
-export class Location {
+export class Reservation {
   constructor(
-    private id: number,
-    private dateHeureDebut: string,
-    private dateHeureFin: string,
-    private montantEnEuros: number,
-    private remarques: string,
-    private locataire: Locataire,
-    private parasols: Parasol[],
-    private concessionnaire: Concessionnaire,
-    private statut: Statut,
-    private lienDeParente?: string
+    public id: number,
+    public dateHeureDebut: string,
+    public dateHeureFin: string,
+    public montantEnEuros: number,
+    public remarques: string,
+    public locataire: Locataire,
+    public parasols: Parasol[],
+    public concessionnaire: Concessionnaire,
+    public statut: Statut,
+    public lienDeParente?: string
   ) {}
 }

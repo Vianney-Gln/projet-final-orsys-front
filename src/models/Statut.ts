@@ -1,3 +1,3 @@
 export class Statut {
-  constructor(private id: number, private nom: string) {}
+  constructor(public id: number, public nom: string) {}
 }

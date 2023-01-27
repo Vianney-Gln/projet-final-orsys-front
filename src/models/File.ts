@@ -1,7 +1,7 @@
 export class File {
   constructor(
-    private id: number,
-    private numero: number,
-    private prixJournalier: number
+    public id: number,
+    public numero: number,
+    public prixJournalier: number
   ) {}
 }

@@ -2,12 +2,12 @@ import { Pays } from './Pays';
 
 export class Locataire {
   constructor(
-    private id: number,
-    private prenom: string,
-    private nom: string,
-    private motDePasse: string,
-    private email: string,
-    private dateHeureInscription: string,
-    private pays: Pays
+    public id: number,
+    public prenom: string,
+    public nom: string,
+    public motDePasse: string,
+    public email: string,
+    public dateHeureInscription: string,
+    public pays: Pays
   ) {}
 }

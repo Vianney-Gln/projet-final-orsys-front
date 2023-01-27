@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Reservation } from '../../models/Locations';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,11 @@ export class ReservationsService {
   id: String | null = localStorage.getItem('utilisateurId');
   public linkLogin = `http://localhost:8280/api/location/user/${this.id}`;
 
-  getLocationsByUserId(): Observable<any> {
-    return this.httpClient.get(this.linkLogin);
+  /**
+   * Récupération d'un Observable de type réservation
+   * @returns
+   */
+  getLocationsByUserId(): Observable<Reservation[]> {
+    return this.httpClient.get<Reservation[]>(this.linkLogin);
   }
 }

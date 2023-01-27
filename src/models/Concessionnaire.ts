@@ -1,10 +1,10 @@
 export class Concessionnaire {
   constructor(
-    private id: number,
-    private nom: string,
-    private prenom: string,
-    private motDePasse: string,
-    private email: string,
-    private numeroTelephone: string
+    public id: number,
+    public nom: string,
+    public prenom: string,
+    public motDePasse: string,
+    public email: string,
+    public numeroTelephone: string
   ) {}
 }
