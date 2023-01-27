@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login/login.component';
 import { ListReservationComponent } from './components/reservations/list-reservation/list-reservation.component';
 import { appRouting } from 'src/app.routing';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, ListReservationComponent],
+  declarations: [AppComponent, LoginComponent, ListReservationComponent, NavigationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
