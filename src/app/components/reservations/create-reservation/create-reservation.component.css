@@ -1,0 +1,22 @@
+.select-parasol {
+  width: 20%;
+}
+
+.container-parasols {
+  display: flex;
+  justify-content: space-around;
+}
+
+.input-date {
+  width: 80%;
+}
+
+.container-remarques {
+  display: flex;
+  justify-content: space-around;
+}
+
+.textarea {
+  width: 80%;
+  height: 10rem;
+}
