@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReservationsService } from 'src/app/services/reservations.service';
+import { File } from 'src/models/File';
+import { DemandeReservation } from 'src/models/DemandeReservation';
 
 @Component({
   selector: 'app-create-reservation',
@@ -7,25 +10,61 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./create-reservation.component.css'],
 })
 export class CreateReservationComponent {
-  signupForm: any;
+  constructor(private serviceReservation: ReservationsService) {}
+  public signupForm: any;
+  public currentDemandeReservation?: DemandeReservation;
+  public files: File[] = [];
+
   ngOnInit() {
-    this.signupForm = new FormGroup({
-      dateDebut: new FormControl(null, Validators.required),
-      dateFin: new FormControl(null, [Validators.required, Validators.email]),
-      parasols: new FormArray([]),
+    this.initFormGroup();
+
+    this.serviceReservation.getFiles().subscribe({
+      next: (resp) => {
+        this.files = resp;
+      },
+      error: (err) => {
+        console.log(err);
+      },
     });
   }
 
-  get formParasols() {
-    return <FormArray>this.signupForm.get('parasols');
+  initFormGroup() {
+    this.signupForm = new FormGroup({
+      dateHeureDebut: new FormControl(null, Validators.required),
+      dateHeureFin: new FormControl(null, Validators.required),
+      remarques: new FormControl(null),
+      requestedFiles: new FormArray([]),
+    });
+  }
+
+  get formRequestedFiles() {
+    return this.signupForm.controls['requestedFiles'] as FormArray;
   }
 
   submitHandler() {
-    console.log(this.signupForm.value);
+    this.currentDemandeReservation = this.signupForm.value;
+    this.currentDemandeReservation!.idLocataire = Number(
+      localStorage.getItem('utilisateurId')
+    );
+    this.serviceReservation
+      .addDemandeReservation(this.currentDemandeReservation!)
+      .subscribe({
+        next: (resp) => {
+          console.log(resp);
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    console.log(this.currentDemandeReservation);
   }
 
-  addParasols() {
-    let newControl = new FormControl(null, Validators.required);
-    this.formParasols.push(newControl);
+  addParasol() {
+    let formGroup = new FormGroup({
+      name: new FormControl('Parasol ' + this.formRequestedFiles?.length + 1),
+      selectedFile: new FormControl(null, [Validators.required]),
+    });
+    this.formRequestedFiles.push(formGroup);
+    console.log(this.signupForm);
   }
 }
