@@ -9,7 +9,9 @@ import { ListReservationComponent } from './components/reservations/list-reserva
 import { appRouting } from 'src/app.routing';
 import { NavigationComponent } from './navigation/navigation.component';
 import { CreateReservationComponent } from './components/reservations/create-reservation/create-reservation.component';
-import { ConcessionnaireComponent } from './concessionnaire/concessionnaire/concessionnaire.component';
+import { ConcessionnaireComponent } from './components/concessionnaire/concessionnaire.component';
+import { ListReservationConcessionnaireComponent } from './components/concessionnaire/list-reservation-concessionnaire/list-reservation-concessionnaire.component';
+import { NavConcessionnaireComponent } from './components/concessionnaire/nav-concessionnaire/nav-concessionnaire.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ConcessionnaireComponent } from './concessionnaire/concessionnaire/conc
     NavigationComponent,
     CreateReservationComponent,
     ConcessionnaireComponent,
+    ListReservationConcessionnaireComponent,
+    NavConcessionnaireComponent,
   ],
   imports: [
     BrowserModule,
