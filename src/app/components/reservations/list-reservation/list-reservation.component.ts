@@ -11,9 +11,11 @@ export class ListReservationComponent {
   constructor(private serviceReservation: ReservationsService) {}
 
   reservations: Reservation[] = [];
+  idCurrentUser: string | null = '';
 
   ngOnInit() {
-    this.serviceReservation.getLocationsByUserId().subscribe({
+    this.idCurrentUser = localStorage.getItem('utilisateurId');
+    this.serviceReservation.getLocationsByUserId(this.idCurrentUser).subscribe({
       next: (resp) => {
         this.reservations = resp;
       },

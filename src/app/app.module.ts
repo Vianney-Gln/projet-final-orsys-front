@@ -9,6 +9,7 @@ import { ListReservationComponent } from './components/reservations/list-reserva
 import { appRouting } from 'src/app.routing';
 import { NavigationComponent } from './navigation/navigation.component';
 import { CreateReservationComponent } from './components/reservations/create-reservation/create-reservation.component';
+import { ConcessionnaireComponent } from './concessionnaire/concessionnaire/concessionnaire.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CreateReservationComponent } from './components/reservations/create-res
     ListReservationComponent,
     NavigationComponent,
     CreateReservationComponent,
+    ConcessionnaireComponent,
   ],
   imports: [
     BrowserModule,

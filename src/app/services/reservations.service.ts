@@ -11,8 +11,7 @@ import { DemandeReservation } from '../../models/DemandeReservation';
 export class ReservationsService {
   constructor(private httpClient: HttpClient) {}
 
-  id: String | null = localStorage.getItem('utilisateurId');
-  public linkLocation = `http://localhost:8280/api/location/user/${this.id}`;
+  public linkLocation = `http://localhost:8280/api/location/user/`;
   public linkFiles = 'http://localhost:8280/api/files';
   public linkAddDemandeReservation = 'http://localhost:8280/api/location';
 
@@ -20,8 +19,8 @@ export class ReservationsService {
    * Récupération d'un Observable de type réservation
    * @returns
    */
-  getLocationsByUserId(): Observable<Reservation[]> {
-    return this.httpClient.get<Reservation[]>(this.linkLocation);
+  getLocationsByUserId(id: string | null): Observable<Reservation[]> {
+    return this.httpClient.get<Reservation[]>(this.linkLocation + id);
   }
 
   /**

@@ -20,10 +20,9 @@ export class LoginComponent {
         this.utilisateurDto = resp;
         if (this.utilisateurDto['role'] == 'concessionnaire') {
           localStorage.setItem('utilisateurId', this.utilisateurDto['id']);
-          console.log('cons');
+          this.router.navigateByUrl('/concessionnaire');
         } else {
           localStorage.setItem('utilisateurId', this.utilisateurDto['id']);
-          console.log('utilisateur');
           this.router.navigateByUrl('/reservations');
         }
       },
