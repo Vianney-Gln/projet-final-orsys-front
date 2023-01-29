@@ -28,7 +28,7 @@
         <textarea formControlName="remarques" class="textarea"></textarea>
       </div>
       <div class="button-and-message">
-        <button class="btn btn-primary mt-3" (click)="submitHandler()" [disabled]="signupForm.isValid"
+        <button class="btn btn-primary mt-3" (click)="submitHandler()" [disabled]="!signupForm.valid"
           type="submit">Submit</button>
         <span *ngIf="message">{{message}}</span>
       </div>

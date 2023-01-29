@@ -38,7 +38,7 @@ export class CreateReservationComponent {
       dateHeureDebut: new FormControl(null, Validators.required),
       dateHeureFin: new FormControl(null, Validators.required),
       remarques: new FormControl(null),
-      requestedFiles: new FormArray([]),
+      requestedFiles: new FormArray([], Validators.required),
     });
   }
 
@@ -76,6 +76,5 @@ export class CreateReservationComponent {
       selectedFile: new FormControl(null, [Validators.required]),
     });
     this.formRequestedFiles.push(formGroup);
-    console.log(this.signupForm);
   }
 }
