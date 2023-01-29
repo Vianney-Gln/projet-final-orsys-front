@@ -56,7 +56,7 @@ export class CreateReservationComponent {
     this.serviceReservation
       .addDemandeReservation(this.currentDemandeReservation!)
       .subscribe({
-        next: (resp) => {
+        next: () => {
           this.message = 'Demande de réservation enregistrée.';
           setTimeout(() => {
             this.router.navigateByUrl('/reservations');
@@ -72,7 +72,7 @@ export class CreateReservationComponent {
 
   addParasol() {
     let formGroup = new FormGroup({
-      name: new FormControl('Parasol ' + this.formRequestedFiles?.length + 1),
+      name: new FormControl('Parasol ' + (this.formRequestedFiles.length + 1)),
       selectedFile: new FormControl(null, [Validators.required]),
     });
     this.formRequestedFiles.push(formGroup);
