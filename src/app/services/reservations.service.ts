@@ -14,6 +14,7 @@ export class ReservationsService {
   public linkLocation = `http://localhost:8280/api/location/user/`;
   public linkFiles = 'http://localhost:8280/api/files';
   public linkAddDemandeReservation = 'http://localhost:8280/api/location';
+  public linkAllLocations = 'http://localhost:8280/api/locations';
 
   /**
    * Récupération d'un Observable de type réservation
@@ -38,5 +39,9 @@ export class ReservationsService {
       this.linkAddDemandeReservation,
       demandeReservation
     );
+  }
+
+  getAllLocations(): Observable<Reservation[]> {
+    return this.httpClient.get<Reservation[]>(this.linkAllLocations);
   }
 }
