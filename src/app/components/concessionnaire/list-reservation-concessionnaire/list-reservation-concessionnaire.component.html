@@ -1,28 +1,22 @@
-<div class="container">
-  <div class="row banner-bg-beach mt-4">
-    <div class="col d-flex justify-content-center align-items-center">
-      <h2 class="text-center text-white mt-3">Liste de vos réservations</h2>
-    </div>
-  </div>
-  <table class="table mt-3 ">
-    <thead class="bg-primary text-white p-2">
-      <th>Date début</th>
-      <th>Date fin</th>
-      <th>Prix total</th>
-      <th>Remarques</th>
-      <th>Client</th>
-      <th>Statut</th>
-      <th>Nb Parasols</th>
-    </thead>
-    <tbody>
-      <!-- <tr *ngFor="let item of reservations">
-        <td>{{item.dateHeureDebut |date}}</td>
-        <td>{{item.dateHeureFin |date}}</td>
-        <td>{{item.montantEnEuros |currency:'EUR':true}}</td>
-        <td>{{item.remarques}}</td>
-        <td>{{item.locataire.nom}} {{item.locataire.prenom}}</td>
-        <td>{{item.statut.nom}}</td>
-        <td>{{item.parasols.length}}</td>
-      </tr> -->
-    </tbody>
-  </table>
+<table class="table mt-3 ">
+  <thead class="bg-primary text-white p-2">
+    <th>Date début</th>
+    <th>Date fin</th>
+    <th>Prix total</th>
+    <th>Remarques</th>
+    <th>Client</th>
+    <th>Statut</th>
+    <th>Nb Parasols</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of reservations">
+      <td>{{item.dateHeureDebut |date}}</td>
+      <td>{{item.dateHeureFin |date}}</td>
+      <td>{{item.montantEnEuros |currency:'EUR':true}}</td>
+      <td>{{item.remarques}}</td>
+      <td>{{item.locataire.nom}} {{item.locataire.prenom}}</td>
+      <td>{{item.statut.nom}}</td>
+      <td>{{item.parasols.length}}</td>
+    </tr>
+  </tbody>
+</table>
