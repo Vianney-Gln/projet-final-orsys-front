@@ -20,3 +20,9 @@
   width: 80%;
   height: 10rem;
 }
+
+.button-and-message {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}

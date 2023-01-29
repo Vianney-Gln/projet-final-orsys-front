@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReservationsService } from 'src/app/services/reservations.service';
 import { File } from 'src/models/File';
 import { DemandeReservation } from 'src/models/DemandeReservation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-reservation',
@@ -10,10 +11,14 @@ import { DemandeReservation } from 'src/models/DemandeReservation';
   styleUrls: ['./create-reservation.component.css'],
 })
 export class CreateReservationComponent {
-  constructor(private serviceReservation: ReservationsService) {}
+  constructor(
+    private serviceReservation: ReservationsService,
+    private router: Router
+  ) {}
   public signupForm: any;
   public currentDemandeReservation?: DemandeReservation;
   public files: File[] = [];
+  public message = '';
 
   ngOnInit() {
     this.initFormGroup();
@@ -43,6 +48,8 @@ export class CreateReservationComponent {
 
   submitHandler() {
     this.currentDemandeReservation = this.signupForm.value;
+    console.log('ce que je souhaite envoyer: ', this.currentDemandeReservation);
+
     this.currentDemandeReservation!.idLocataire = Number(
       localStorage.getItem('utilisateurId')
     );
@@ -50,13 +57,17 @@ export class CreateReservationComponent {
       .addDemandeReservation(this.currentDemandeReservation!)
       .subscribe({
         next: (resp) => {
-          console.log(resp);
+          this.message = 'Demande de réservation enregistrée.';
+          setTimeout(() => {
+            this.router.navigateByUrl('/reservations');
+          }, 2000);
         },
         error: (err) => {
           console.log(err);
+          this.message =
+            'Il y a eu une erreur lors de votre demande de réservation.';
         },
       });
-    console.log(this.currentDemandeReservation);
   }
 
   addParasol() {

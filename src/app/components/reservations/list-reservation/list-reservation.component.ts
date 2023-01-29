@@ -16,7 +16,6 @@ export class ListReservationComponent {
     this.serviceReservation.getLocationsByUserId().subscribe({
       next: (resp) => {
         this.reservations = resp;
-        console.log(this.reservations);
       },
       error: (err) => {
         console.log(err);
