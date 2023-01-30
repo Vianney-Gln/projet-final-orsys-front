@@ -17,7 +17,6 @@ export class ConcessionnaireComponent {
     this.serviceRervation.getAllLocations().subscribe({
       next: (resp) => {
         this.reservations = resp;
-        console.log(resp);
       },
       error: (err) => {
         console.log(err);

@@ -7,6 +7,7 @@
     <th>Client</th>
     <th>Statut</th>
     <th>Nb Parasols</th>
+    <th>Traitement</th>
   </thead>
   <tbody>
     <tr *ngFor="let item of reservations">
@@ -17,6 +18,10 @@
       <td>{{item.locataire.nom}} {{item.locataire.prenom}}</td>
       <td>{{item.statut.nom}}</td>
       <td>{{item.parasols.length}}</td>
+      <td>
+        <button class="btn btn-success" type="button">Accepter</button>
+        <button (click)="decliner(item.id)" class="btn btn-danger ms-2" type="button">Décliner</button>
+      </td>
     </tr>
   </tbody>
 </table>
