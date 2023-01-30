@@ -1,0 +1,21 @@
+<nav class="navbar bg-primary navbar-expand-sm navbar-dark ">
+  <div class="navbar-brand">Concession privée</div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample06"
+    aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
+  </button>
+  <div class="collapse navbar-collapse" id="navbarsExample06">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+          [routerLink]="['/reservations/create']">Créer
+          une réservation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+          [routerLink]="['/reservations']">Vos réservation</a>
+      </li>
+    </ul>
+  </div>
+  <div (click)="deconnexion()" class="col col-1"><button class="btn btn-primary" type="button">Deconnexion</button>
+  </div>
+</nav>

@@ -1,0 +1,39 @@
+.select-parasol {
+  width: 20%;
+}
+
+.container-parasols {
+  display: flex;
+  justify-content: space-around;
+}
+
+.input-date {
+  width: 80%;
+}
+
+.container-remarques {
+  display: flex;
+  justify-content: space-around;
+}
+
+.textarea {
+  width: 80%;
+  height: 10rem;
+}
+
+.button-and-message {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+h2.text-white {
+  text-shadow: 1px 1px 2px black;
+}
+
+.banner-bg-beach {
+  background-image: url("../../../../assets/images/bannière-plage.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+}
