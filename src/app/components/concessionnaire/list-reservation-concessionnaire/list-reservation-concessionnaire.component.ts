@@ -31,4 +31,8 @@ export class ListReservationConcessionnaireComponent {
       });
     }
   }
+
+  accepter(item: any) {
+    console.log(item);
+  }
 }

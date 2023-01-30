@@ -1,0 +1,41 @@
+<app-nav-concessionnaire></app-nav-concessionnaire>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2 class="text-center mt-4">Détail Réservation</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table mt-4">
+        <thead>
+          <th>Client</th>
+          <th>Numéro de réservation id:</th>
+          <th>Dates de réservation</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{detailReservation.locataire.nom}} {{detailReservation.locataire.prenom}}</td>
+            <td> {{detailReservation.id}}</td>
+            <td> du {{detailReservation.dateHeureDebut.substring(0,10)}} au
+              {{detailReservation.dateHeureFin.substring(0,10)}} </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Attribution des emplacements de parasols:</h3>
+      <select class="form-control mt-3" *ngFor="let parasol of detailReservation.parasols;let i = index"
+        name="NumeroEmplacement" id="NumeroEmplacement">
+        <option>Emplacement Parasol {{i+1}}</option>
+        <option>Test</option>
+        <option>Test</option>
+        <option>Test</option>
+      </select>
+      <button (click)="validerReservation(detailReservation.id)" type="button"
+        class="btn btn-primary mt-3">Valider</button>
+      <button [routerLink]="['/concessionnaire']" type="button" class="btn btn-primary mt-3 ms-3">Retour à la liste des
+        resa</button>
+    </div>
+
+  </div>
+</div>
