@@ -12,6 +12,7 @@ import { CreateReservationComponent } from './components/reservations/create-res
 import { ConcessionnaireComponent } from './components/concessionnaire/concessionnaire.component';
 import { ListReservationConcessionnaireComponent } from './components/concessionnaire/list-reservation-concessionnaire/list-reservation-concessionnaire.component';
 import { NavConcessionnaireComponent } from './components/concessionnaire/nav-concessionnaire/nav-concessionnaire.component';
+import { DetailReservationComponent } from './components/concessionnaire/detail-reservation/detail-reservation.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NavConcessionnaireComponent } from './components/concessionnaire/nav-co
     ConcessionnaireComponent,
     ListReservationConcessionnaireComponent,
     NavConcessionnaireComponent,
+    DetailReservationComponent,
   ],
   imports: [
     BrowserModule,

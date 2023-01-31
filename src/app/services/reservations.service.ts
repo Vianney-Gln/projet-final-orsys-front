@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Reservation } from '../../models/Locations';
 import { File } from 'src/models/File';
 import { DemandeReservation } from '../../models/DemandeReservation';
+import { TraitementReservation } from '../../models/TraitementReservation';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,7 @@ export class ReservationsService {
   public linkFiles = 'http://localhost:8280/api/files';
   public linkAddDemandeReservation = 'http://localhost:8280/api/location';
   public linkAllLocations = 'http://localhost:8280/api/locations';
+  public linkLocationById = 'http://localhost:8280/api/location/';
 
   /**
    * Récupération d'un Observable de type réservation
@@ -43,5 +45,19 @@ export class ReservationsService {
 
   getAllLocations(): Observable<Reservation[]> {
     return this.httpClient.get<Reservation[]>(this.linkAllLocations);
+  }
+
+  getLocationById(id: number): Observable<Reservation> {
+    return this.httpClient.get<Reservation>(`${this.linkLocationById}${id}`);
+  }
+
+  traitementReservation(
+    id: number,
+    traitementReservation: TraitementReservation
+  ): Observable<void> {
+    return this.httpClient.put<void>(
+      'http://localhost:8280/api/location/' + id,
+      traitementReservation
+    );
   }
 }
