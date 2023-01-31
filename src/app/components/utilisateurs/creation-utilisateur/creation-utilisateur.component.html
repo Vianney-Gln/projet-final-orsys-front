@@ -13,12 +13,15 @@
         <label class="mt-2" for="password">Entrer un mot de passe:</label>
         <input ngModel required name="password" class="form-control" type="password">
         <label class="mt-2" for="confirmPassword">Confirmez votre mot de passe:</label>
-        <input ngModel required name="confirmPassword" class="form-control" type="password">
+        <input (change)="getConfirmPassword($event.target)" required name="confirmPassword" class="form-control"
+          type="password">
         <label class="mt-2" for="pays">Votre pays de résidence:</label>
-        <select ngModel required name="pays" class="form-control"></select>
+        <select ngModel required name="pays" class="form-control">
+
+        </select>
         <label class="mt-2" for="lienDeParente">Lien de parenté avec le concessionnaire:</label>
         <select ngModel name="lienDeParente" class="form-control"></select>
-        <button (click)="handleSubmit(f)" [disabled]="!f.valid" class="btn btn-primary mt-3"
+        <button (click)="handleSubmit(f)" [disabled]="f.valid" class="btn btn-primary mt-3"
           type="submit">S'inscrire</button>
       </form>
     </div>
