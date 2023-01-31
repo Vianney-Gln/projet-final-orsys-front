@@ -8,7 +8,9 @@
         <input ngModel required name="nom" class="form-control" type="text">
         <label class="mt-2" for="prenom">Votre prenom:</label>
         <input class="mt-2" ngModel required name="prenom" class="form-control" type="text">
-        <label class="mt-2" for="email">Votre email:</label>
+        <label class="mt-2" for="email">Votre email: <span *ngIf="errorEmail" class="bg-danger badge">**{{errorEmail}}
+          </span>
+        </label>
         <input ngModel required name="email" class="form-control" type="email">
         <label class="mt-2" for="password">Entrer un mot de passe:</label>
         <input ngModel minlength="8" required name="password" class="form-control" type="password">

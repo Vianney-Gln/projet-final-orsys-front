@@ -32,6 +32,7 @@ export class CreationUtilisateurComponent {
   message: string = '';
   successMessage: string = '';
   errorMessage: string = '';
+  errorEmail: string = '';
 
   /**
    * Fonction qui traite l'envois de l'inscription
@@ -41,6 +42,11 @@ export class CreationUtilisateurComponent {
     this.inscription = f.value;
     this.inscription.lienDeParente = this.currentSelectedLienDeP;
     this.inscription.pays = this.currentSelectedPays;
+
+    if (this.validateEmail(this.inscription.email) == false) {
+      this.errorEmail = 'email invalide!';
+      return;
+    }
 
     if (
       this.inscription.password === this.confirmedPassword &&
@@ -145,6 +151,12 @@ export class CreationUtilisateurComponent {
           console.log(err);
         },
       });
+  }
+
+  validateEmail(email: string): boolean {
+    const regexMail =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regexMail.test(email);
   }
 
   ngOnInit() {
