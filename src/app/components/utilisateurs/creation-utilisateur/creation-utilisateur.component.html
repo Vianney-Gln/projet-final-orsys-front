@@ -1,1 +1,26 @@
-<p>creation-utilisateur works!</p>
+<div class="container">
+  <h2 class="text-center mt-4">Creation de compte</h2>
+  <div class="row d-flex justify-content-center">
+    <div class="col col-6">
+
+      <form #f="ngForm">
+        <label class="mt-2" for="nom">Votre nom:</label>
+        <input ngModel required name="nom" class="form-control" type="text">
+        <label class="mt-2" for="prenom">Votre prenom:</label>
+        <input class="mt-2" ngModel required name="prenom" class="form-control" type="text">
+        <label class="mt-2" for="email">Votre email:</label>
+        <input ngModel required name="email" class="form-control" type="email">
+        <label class="mt-2" for="password">Entrer un mot de passe:</label>
+        <input ngModel required name="password" class="form-control" type="password">
+        <label class="mt-2" for="confirmPassword">Confirmez votre mot de passe:</label>
+        <input ngModel required name="confirmPassword" class="form-control" type="password">
+        <label class="mt-2" for="pays">Votre pays de résidence:</label>
+        <select ngModel required name="pays" class="form-control"></select>
+        <label class="mt-2" for="lienDeParente">Lien de parenté avec le concessionnaire:</label>
+        <select ngModel name="lienDeParente" class="form-control"></select>
+        <button (click)="handleSubmit(f)" [disabled]="!f.valid" class="btn btn-primary mt-3"
+          type="submit">S'inscrire</button>
+      </form>
+    </div>
+  </div>
+</div>
