@@ -30,6 +30,8 @@
         <button (click)="handleSubmit(f)" [disabled]="!f.valid" class="btn btn-primary mt-3"
           type="submit">S'inscrire</button>
         <p class="text-danger" *ngIf="message">{{message}}</p>
+        <p class="text-success" *ngIf="successMessage">{{successMessage}}</p>
+        <p class="text-danger" *ngIf="errorMessage">{{errorMessage}}</p>
       </form>
     </div>
   </div>

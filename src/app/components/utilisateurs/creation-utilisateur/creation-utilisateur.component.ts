@@ -6,6 +6,7 @@ import { Pays } from 'src/models/Pays';
 import { LienDeParente } from '../../../../models/LiendeParente';
 import { Inscription } from '../../../../models/Inscription';
 import { InscriptionService } from 'src/app/services/inscription.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-creation-utilisateur',
@@ -16,7 +17,8 @@ export class CreationUtilisateurComponent {
   constructor(
     private paysService: PaysService,
     private lienDeParenteService: LienDeParenteService,
-    private inscriptionService: InscriptionService
+    private inscriptionService: InscriptionService,
+    private router: Router
   ) {}
 
   confirmedPassword: string = '';
@@ -28,6 +30,8 @@ export class CreationUtilisateurComponent {
   currentSelectedPays!: Pays;
   inscription!: Inscription;
   message: string = '';
+  successMessage: string = '';
+  errorMessage: string = '';
 
   /**
    * Fonction qui traite l'envois de l'inscription
@@ -43,11 +47,15 @@ export class CreationUtilisateurComponent {
       this.inscription.password.length >= 8
     ) {
       this.inscriptionService.addNewUser(this.inscription).subscribe({
-        next: (resp) => {
-          console.log(resp);
+        next: () => {
+          this.successMessage = 'Inscription réussie!';
+          setTimeout(() => {
+            this.router.navigateByUrl('/login');
+          }, 2000);
         },
         error: (err) => {
           console.log(err);
+          this.errorMessage = "Il y a eu une erreur lors de l'inscription";
         },
       });
     } else {
