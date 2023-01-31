@@ -14,4 +14,8 @@ export class PaysService {
   getPays(): Observable<Pays[]> {
     return this.httpClient.get<Pays[]>(this.linkPays);
   }
+
+  getPaysById(id: string): Observable<Pays> {
+    return this.httpClient.get<Pays>(this.linkPays + '/' + id);
+  }
 }

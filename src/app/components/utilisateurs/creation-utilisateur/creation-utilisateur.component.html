@@ -11,10 +11,10 @@
         <label class="mt-2" for="email">Votre email:</label>
         <input ngModel required name="email" class="form-control" type="email">
         <label class="mt-2" for="password">Entrer un mot de passe:</label>
-        <input ngModel required name="password" class="form-control" type="password">
+        <input ngModel minlength="8" required name="password" class="form-control" type="password">
         <label class="mt-2" for="confirmPassword">Confirmez votre mot de passe:</label>
-        <input (change)="getConfirmPassword($event.target)" required name="confirmPassword" class="form-control"
-          type="password">
+        <input (change)="getConfirmPassword($event.target)" minlength="8" required name="confirmPassword"
+          class="form-control" type="password">
         <label class="mt-2" for="pays">Votre pays de résidence:</label>
         <select #selectedPays (change)="selectedValuePays(selectedPays.value)" required name="pays"
           class="form-control">
@@ -24,11 +24,12 @@
         <label class="mt-2" for="lienDeParente">Lien de parenté avec le concessionnaire:</label>
         <select #selectedLienDeParente (change)="selectedValueParente(selectedLienDeParente.value)" name="lienDeParente"
           class="form-control">
-          <option>--choix liens--</option>
+          <option [value]="null">--choix liens--</option>
           <option [value]="lienDeP.id" *ngFor="let lienDeP of lienDeParente">{{lienDeP.nom}}</option>
         </select>
-        <button (click)="handleSubmit(f)" [disabled]="f.valid" class="btn btn-primary mt-3"
+        <button (click)="handleSubmit(f)" [disabled]="!f.valid" class="btn btn-primary mt-3"
           type="submit">S'inscrire</button>
+        <p class="text-danger" *ngIf="message">{{message}}</p>
       </form>
     </div>
   </div>

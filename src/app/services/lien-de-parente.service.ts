@@ -14,4 +14,10 @@ export class LienDeParenteService {
   getLienDeParentes(): Observable<LienDeParente[]> {
     return this.httpClient.get<LienDeParente[]>(this.linkLienDeParente);
   }
+
+  getLienDeParenteById(id: number): Observable<LienDeParente> {
+    return this.httpClient.get<LienDeParente>(
+      this.linkLienDeParente + '/' + id
+    );
+  }
 }
