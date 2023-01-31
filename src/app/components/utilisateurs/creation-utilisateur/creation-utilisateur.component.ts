@@ -19,6 +19,8 @@ export class CreationUtilisateurComponent {
   confirmedPassword: string = '';
   pays: Pays[] = [];
   lienDeParente: LienDeParente[] = [];
+  paysId: string = '';
+  lienDeParenteId!: number;
 
   /**
    * Fonction qui traite l'envois de l'inscription
@@ -37,6 +39,9 @@ export class CreationUtilisateurComponent {
     console.log(this.confirmedPassword);
   }
 
+  /**
+   * Recuperation des pays depuis le back
+   */
   getPays(): void {
     this.paysService.getPays().subscribe({
       next: (resp) => {
@@ -47,6 +52,9 @@ export class CreationUtilisateurComponent {
       },
     });
   }
+  /**
+   * Recuperation des liens de parentes depuis le back
+   */
   getLienDeParentes(): void {
     this.lienDeParenteService.getLienDeParentes().subscribe({
       next: (resp) => {
@@ -56,6 +64,22 @@ export class CreationUtilisateurComponent {
         console.log(err);
       },
     });
+  }
+
+  /**
+   * Recuperation de l'id de lien de parente depuis le select du template html
+   * @param selectedLienDeParenteId
+   */
+  selectedValueParente(selectedLienDeParenteId: string) {
+    this.lienDeParenteId = Number(selectedLienDeParenteId);
+  }
+
+  /**
+   * Recuperation de l'id du pays depuis le template html
+   * @param selectedPaysId
+   */
+  selectedValuePays(selectedPaysId: string) {
+    this.paysId = selectedPaysId;
   }
 
   ngOnInit() {
