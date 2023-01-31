@@ -1,3 +1,4 @@
+import { File } from 'src/models/File';
 export class Parasol {
   constructor(
     public id: number,
