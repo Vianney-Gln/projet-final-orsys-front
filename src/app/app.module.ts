@@ -13,6 +13,7 @@ import { ConcessionnaireComponent } from './components/concessionnaire/concessio
 import { ListReservationConcessionnaireComponent } from './components/concessionnaire/list-reservation-concessionnaire/list-reservation-concessionnaire.component';
 import { NavConcessionnaireComponent } from './components/concessionnaire/nav-concessionnaire/nav-concessionnaire.component';
 import { DetailReservationComponent } from './components/concessionnaire/detail-reservation/detail-reservation.component';
+import { CreationUtilisateurComponent } from './components/utilisateurs/creation-utilisateur/creation-utilisateur.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DetailReservationComponent } from './components/concessionnaire/detail-
     ListReservationConcessionnaireComponent,
     NavConcessionnaireComponent,
     DetailReservationComponent,
+    CreationUtilisateurComponent,
   ],
   imports: [
     BrowserModule,
