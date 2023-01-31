@@ -17,10 +17,14 @@
           type="password">
         <label class="mt-2" for="pays">Votre pays de résidence:</label>
         <select ngModel required name="pays" class="form-control">
-
+          <option>--choix pays--</option>
+          <option *ngFor="let p of pays">{{p.nom}}</option>
         </select>
         <label class="mt-2" for="lienDeParente">Lien de parenté avec le concessionnaire:</label>
-        <select ngModel name="lienDeParente" class="form-control"></select>
+        <select ngModel name="lienDeParente" class="form-control">
+          <option>--choix liens--</option>
+          <option *ngFor="let lienDeP of lienDeParente">{{lienDeP.nom}}</option>
+        </select>
         <button (click)="handleSubmit(f)" [disabled]="f.valid" class="btn btn-primary mt-3"
           type="submit">S'inscrire</button>
       </form>
