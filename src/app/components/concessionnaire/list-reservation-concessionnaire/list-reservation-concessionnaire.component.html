@@ -1,4 +1,4 @@
-<table class="table mt-3 ">
+<table *ngIf="reservations.length" class="table mt-3 ">
   <thead class="bg-primary text-white p-2">
     <th>Date début</th>
     <th>Date fin</th>
@@ -27,3 +27,6 @@
     </tr>
   </tbody>
 </table>
+
+<p *ngIf="!reservations.length" class="text-center mt-3 h3">Vous n'avez aucune réservation dans votre concession pour le
+  moment... </p>
