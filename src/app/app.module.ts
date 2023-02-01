@@ -14,6 +14,9 @@ import { ListReservationConcessionnaireComponent } from './components/concession
 import { NavConcessionnaireComponent } from './components/concessionnaire/nav-concessionnaire/nav-concessionnaire.component';
 import { DetailReservationComponent } from './components/concessionnaire/detail-reservation/detail-reservation.component';
 import { CreationUtilisateurComponent } from './components/utilisateurs/creation-utilisateur/creation-utilisateur.component';
+import { ConcessionnaireGuard } from './concessionnaire.guard';
+import { UtilisateurGuard } from './Utilisateur.guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import { CreationUtilisateurComponent } from './components/utilisateurs/creation
     NavConcessionnaireComponent,
     DetailReservationComponent,
     CreationUtilisateurComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,7 @@ import { CreationUtilisateurComponent } from './components/utilisateurs/creation
     HttpClientModule,
     appRouting,
   ],
-  providers: [],
+  providers: [ConcessionnaireGuard, UtilisateurGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
