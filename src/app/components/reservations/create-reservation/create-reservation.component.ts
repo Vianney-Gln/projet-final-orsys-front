@@ -16,12 +16,17 @@ export class CreateReservationComponent {
     private router: Router
   ) {}
   public signupForm: any;
-  public currentDemandeReservation?: DemandeReservation;
+  public currentDemandeReservation!: DemandeReservation;
   public files: File[] = [];
   public message = '';
+  public errorDateMsg = '';
+  public currentYear: any;
 
   ngOnInit() {
     this.initFormGroup();
+
+    const date = new Date();
+    this.currentYear = date.getFullYear();
 
     this.serviceReservation.getFiles().subscribe({
       next: (resp) => {
@@ -48,7 +53,17 @@ export class CreateReservationComponent {
 
   submitHandler() {
     this.currentDemandeReservation = this.signupForm.value;
-    console.log('ce que je souhaite envoyer: ', this.currentDemandeReservation);
+
+    if (
+      this.compareDate(
+        this.currentDemandeReservation.dateHeureDebut!,
+        this.currentDemandeReservation.dateHeureFin!
+      ) == false
+    ) {
+      this.errorDateMsg =
+        'la date début ne peut être inférieur à la date de fin.';
+      return;
+    }
 
     this.currentDemandeReservation!.idLocataire = Number(
       localStorage.getItem('utilisateurId')
@@ -76,5 +91,12 @@ export class CreateReservationComponent {
       selectedFile: new FormControl(null, [Validators.required]),
     });
     this.formRequestedFiles.push(formGroup);
+  }
+
+  compareDate(dateDebutStr: string, dateFinStr: string): boolean {
+    const dateDebut: number = Date.parse(dateDebutStr);
+    const dateFin: number = Date.parse(dateFinStr);
+
+    return dateDebut <= dateFin;
   }
 }
