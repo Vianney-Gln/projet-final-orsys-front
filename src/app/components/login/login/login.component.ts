@@ -13,6 +13,7 @@ export class LoginComponent {
   constructor(private loginService: LoginService, private router: Router) {}
 
   utilisateurDto?: UtilisateurDto;
+  errorMessage: string = '';
 
   handleSubmit(f: NgForm): void {
     this.loginService.login(f.value).subscribe({
@@ -28,6 +29,8 @@ export class LoginComponent {
       },
       error: (err) => {
         console.log(err);
+        this.errorMessage =
+          'Connexion impossible, veuillez vérifier vos identifiants';
       },
     });
   }

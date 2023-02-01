@@ -1,4 +1,4 @@
-<table class="table mt-3 ">
+<table *ngIf="reservations.length" class="table mt-3 ">
   <thead class="bg-primary text-white p-2">
     <th>Date début</th>
     <th>Date fin</th>
@@ -19,10 +19,14 @@
       <td>{{item.statut.nom}}</td>
       <td>{{item.parasols.length}}</td>
       <td>
-        <button [routerLink]="['/detail-reservation',item.id]" (click)="accepter(item)" class="btn btn-success"
-          type="button">Traiter</button>
-        <button (click)="decliner(item.id)" class="btn btn-danger ms-2" type="button">Décliner</button>
+        <button [disabled]="item.statut.nom != 'A traiter'" [routerLink]="['/detail-reservation',item.id]"
+          (click)="accepter(item)" class="btn btn-success" type="button">Traiter</button>
+        <button [disabled]="item.statut.nom != 'A traiter'" (click)="decliner(item.id)" class="btn btn-danger ms-2"
+          type="button">Décliner</button>
       </td>
     </tr>
   </tbody>
 </table>
+
+<p *ngIf="!reservations.length" class="text-center mt-3 h3">Vous n'avez aucune réservation dans votre concession pour le
+  moment... </p>

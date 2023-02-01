@@ -7,7 +7,7 @@
   </div>
 
 
-  <table class="table mt-3 ">
+  <table *ngIf="reservations.length" class="table mt-3 ">
     <thead class="bg-primary text-white p-2">
       <th>Date début</th>
       <th>Date fin</th>
@@ -29,4 +29,10 @@
       </tr>
     </tbody>
   </table>
+
+  <div *ngIf="!reservations.length" class="row">
+    <div class="col">
+      <p class="text-center mt-4 h3">Vous n'avez pas encore de réservations...</p>
+    </div>
+  </div>
 </div>
