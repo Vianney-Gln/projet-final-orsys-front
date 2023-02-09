@@ -65,13 +65,15 @@ export class DetailReservationComponent {
       (para) => para.file.id!
     );
 
-    return this.parasolService.getParasolsByFile(fileIds).subscribe({
-      next: (resp) => {
-        Object.entries(resp).forEach(([key, value]) => {
-          this.listParasolByFile.set(key, value);
-        });
-      },
-    });
+    return this.parasolService
+      .getParasolsByFile(fileIds, this.detailReservation!.dateHeureDebut)
+      .subscribe({
+        next: (resp) => {
+          Object.entries(resp).forEach(([key, value]) => {
+            this.listParasolByFile.set(key, value);
+          });
+        },
+      });
   }
 
   getParasolByFileId(fileId: string): Parasol[] {
