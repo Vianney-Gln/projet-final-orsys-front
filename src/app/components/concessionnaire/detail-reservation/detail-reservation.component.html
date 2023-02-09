@@ -25,20 +25,25 @@
         </tbody>
       </table>
       <h3>Attribution des emplacements de parasols:</h3>
+      <form #f="ngForm">
+        <ng-container *ngIf="listParasolByFile">
 
-      <ng-container *ngIf="listParasolByFile">
-        <select #parasolId (change)="selectedValue(parasolId.value, i)" class=" form-control mt-3"
-          *ngFor="let parasol of detailReservation.parasols;let i = index" name="NumeroEmplacement"
-          id="NumeroEmplacement">
-          <option>Emplacement Parasol {{i+1}}</option>
-          <option [value]="para.id" *ngFor="let para of getParasolByFileId(parasol.file.id!.toString())">
-            {{para.numeroEmplacement}}
-          </option>
-        </select>
-      </ng-container>
-      <button (click)="validerReservation()" type="submit" class="btn btn-primary mt-3">Valider</button>
-      <button [routerLink]="['/concessionnaire']" type="button" class="btn btn-primary mt-3 ms-3">Retour à la liste
-        des resa</button>
+          <select required #parasolId (change)="selectedValue(parasolId.value, i)" class=" form-control mt-3"
+            *ngFor="let parasol of detailReservation.parasols;let i = index" name="NumeroEmplacement"
+            id="NumeroEmplacement">
+            <option [value]="null">Emplacement Parasol {{i+1}}</option>
+            <option [value]="para.id" *ngFor="let para of getParasolByFileId(parasol.file.id!.toString())">
+              {{para.numeroEmplacement}}
+            </option>
+          </select>
+        </ng-container>
+        <button [disabled]="!f.valid" (click)="validerReservation()" type="submit"
+          class="btn btn-primary mt-3">Valider</button>
+        <button [routerLink]="['/concessionnaire']" type="button" class="btn btn-primary mt-3 ms-3">Retour à la liste
+          des resa</button>
+        <p *ngIf="errorSelection" class="text-danger">{{errorSelection}}</p>
+        <p *ngIf="errorAlreadyValidate" class="text-danger">{{errorAlreadyValidate}}</p>
+      </form>
     </div>
 
   </div>

@@ -20,7 +20,7 @@
       <td>{{item.parasols.length}}</td>
       <td>
         <button [disabled]="item.statut.nom != 'A traiter'" [routerLink]="['/detail-reservation',item.id]"
-          (click)="accepter(item)" class="btn btn-success" type="button">Traiter</button>
+          class="btn btn-success" type="button">Traiter</button>
         <button [disabled]="item.statut.nom != 'A traiter'" (click)="decliner(item.id)" class="btn btn-danger ms-2"
           type="button">Décliner</button>
       </td>

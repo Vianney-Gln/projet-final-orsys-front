@@ -1,6 +1,6 @@
 import { ReservationsService } from 'src/app/services/reservations.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Reservation } from '../../../../models/Locations';
 import { ParasolService } from 'src/app/services/parasol.service';
 import { Parasol } from 'src/models/Parasol';
@@ -17,13 +17,16 @@ export class DetailReservationComponent {
   constructor(
     private serviceReservation: ReservationsService,
     private activatedRoute: ActivatedRoute,
-    private parasolService: ParasolService
+    private parasolService: ParasolService,
+    private router: Router
   ) {}
 
   detailReservation?: Reservation;
   listParasolByFile: Map<string, Parasol[]> = new Map();
   selectedParasol: Map<number, string> = new Map();
   currentIdReservation: string | null = '';
+  errorSelection: string = '';
+  errorAlreadyValidate: string = '';
 
   ngOnInit() {
     this.getRouteParam();
@@ -37,6 +40,16 @@ export class DetailReservationComponent {
     this.selectedParasol.forEach((val) => {
       listIdsParasolToUpdate.push(Number(val));
     });
+
+    if (this.detailReservation!.statut.nom != 'A traiter') {
+      this.errorAlreadyValidate = 'Cette demande a déjà été validée.';
+      return;
+    }
+
+    if (!listIdsParasolToUpdate.length) {
+      this.errorSelection = 'Veuillez selectionner un emplacement svp';
+      return;
+    }
     const acceptation = new TraitementReservation(2, listIdsParasolToUpdate);
 
     this.serviceReservation
@@ -44,6 +57,9 @@ export class DetailReservationComponent {
       .subscribe({
         next: () => {
           alert('Demande de réservation mise à jour.');
+          setTimeout(() => {
+            this.router.navigateByUrl('/concessionnaire');
+          }, 2000);
         },
         error: (err) => {
           console.log(err);
