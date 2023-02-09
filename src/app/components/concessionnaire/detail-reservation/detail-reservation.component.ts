@@ -38,6 +38,8 @@ export class DetailReservationComponent {
   validerReservation() {
     const listIdsParasolToUpdate: number[] = [];
     this.selectedParasol.forEach((val) => {
+      console.log(val);
+
       listIdsParasolToUpdate.push(Number(val));
     });
 
@@ -46,7 +48,10 @@ export class DetailReservationComponent {
       return;
     }
 
-    if (!listIdsParasolToUpdate.length) {
+    if (
+      !listIdsParasolToUpdate.length ||
+      listIdsParasolToUpdate.length != this.detailReservation!.parasols.length
+    ) {
       this.errorSelection = 'Veuillez selectionner un emplacement svp';
       return;
     }
